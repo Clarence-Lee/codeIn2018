@@ -9,11 +9,13 @@ public class iqiyi01 {
         Scanner sc = new Scanner(System.in);
         String num = sc.nextBigInteger().toString();
         String nu = num;
-        String sum = null;
+        String sum;
+
+        System.out.println(num);
 
         while (true){
             String[] shu = new String[num.length()];
-
+            sum = null;
             for(int i = 0; i < num.length(); i++){
                 shu[i] = num.substring(0, num.length() - i);
             }
@@ -29,6 +31,7 @@ public class iqiyi01 {
             }
             num = a.add(new BigInteger("-"+b)).toString();
         }
+        //System.out.println("No");
 
     }
 
@@ -67,9 +70,11 @@ public class iqiyi01 {
             int indexNum2 = Integer.parseInt(s2.charAt(i)+"");
 
             int numResult = indexNum1 + indexNum2 + (isOver ? 1 : 0);
-            isOver = numResult > 10 ? true : false;
-            result.append(String.valueOf(numResult > 10 ? numResult-10 : numResult));
+            isOver = numResult >= 10 ? true : false;
+            result.append(String.valueOf(numResult >= 10 ? numResult-10 : numResult));
         }
+        if (isOver)
+            result.append(String.valueOf(1));
 
         // 再次反转输入
         return result.reverse().toString();
